@@ -1,70 +1,39 @@
-﻿int number = 202354392;
-string numberAsString = number.ToString();
-char[] letters = numberAsString.ToCharArray();
-int counter0 = 0;
-int counter1 = 0;
-int counter2 = 0;
-int counter3 = 0;
-int counter4 = 0;
-int counter5 = 0;
-int counter6 = 0;
-int counter7 = 0;
-int counter8 = 0;
-int counter9 = 0;
-foreach (char letter in letters)
-{   if (letter == '0')
-    {
-        counter0++;
+﻿using ConsoleApp2;
+using System.Reflection.Metadata;
+Employee employee1 = new Employee("Jarek", "Kowalski", 27);
+Employee employee2 = new Employee("Basia", "Lalik", 48);
+Employee employee3 = new Employee("Zbyszek", "Nowak", 36);
 
+employee1.AddScore(5);
+employee1.AddScore(7);
+employee1.AddScore(4);
+employee1.AddScore(2);
+employee1.AddScore(3);
 
-    }
-    else if (letter == '1')
-    {
-        counter1++;
-    }
-    else if (letter == '2')
-    {
-        counter2++;
-    }
-    else if (letter == '3')
+employee2.AddScore(6);
+employee2.AddScore(2);
+employee2.AddScore(8);
+employee2.AddScore(9);
+employee2.AddScore(2);
 
-    {
-        counter3++;
+employee3.AddScore(1);
+employee3.AddScore(6);
+employee3.AddScore(2);
+employee3.AddScore(7);
+employee3.AddScore(3);
 
-    }
-    else if (letter == '4')
+List<Employee> employees = new List<Employee>()
+{
+    employee1,employee2,employee3
+};
+int maxResult = -1;
+Employee? employeeWithMaxResult = null;
+foreach(Employee employee in employees)
     {
-        counter4++;
-    }
-    else if (letter == '5')
+    if(employee.Result > maxResult)
     {
-        counter5++;
-    }
-    else if (letter == '6')
-    {
-        counter6++;
-    }
-    else if (letter == '7')
-    {
-        counter7++;
-    }
-    else if (letter == '8')
-    {
-        counter8++;
-    }
-    else if (letter == '9')
-    {
-        counter9++;
+        maxResult = employee.Result;
+        employeeWithMaxResult = employee;
     }
 }
-Console.WriteLine(counter0);
-Console.WriteLine(counter1);
-Console.WriteLine(counter2);
-Console.WriteLine(counter3);
-Console.WriteLine(counter4);
-Console.WriteLine(counter5);
-Console.WriteLine(counter6);
-Console.WriteLine(counter7);
-Console.WriteLine(counter8);
-Console.WriteLine(counter9);
-
+Console.WriteLine("Najlepszy wynik ma " + employeeWithMaxResult?.Name + " " + employeeWithMaxResult?.Surname + " zdobył " + employeeWithMaxResult.Result + " punktów");
