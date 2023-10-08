@@ -1,51 +1,43 @@
-using ConsoleApp2;
+using ConsoleApp3;
 
-namespace TypeTest1
+namespace TypeTests
 {
     public class Tests
     {
         [Test]
-        public void EmployeeDifferent()
+        public void CheckingTheMaximumValue()
         {
+            var employee = new Employee("Jan", "Cebulski");
+            employee.AddGrade(1.9f);
+            employee.AddGrade(4.1f);
+            employee.AddGrade(2.0f);
+            var statistics = employee.GetStatistics();
 
-            var employee1 = GetEmployee ("Jarek", "Kowalski", 27);
-            var employee2 = GetEmployee ("Zenek","Drewniak", 24);
-
-
-            Assert.AreNotEqual(employee1,employee2);
+            Assert.AreEqual(4.1f, statistics.Max);
         }
         [Test]
-        public void NameDifferent()
+        public void CheckingTheMinimumValue()
         {
-            string name1 = ("Jan");
-            string name2 = ("Jan");
-           
+            var employee = new Employee("Jan", "Cebulski");
+            employee.AddGrade(6.5f);
+            employee.AddGrade(8.1f);
+            employee.AddGrade(4.0f);
+            var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(name1,name2);
+            Assert.AreEqual(4.0f, statistics.Min);
         }
         [Test]
-        public void NumberDifferent()
+        public void CheckingTheAverageValue()
         {
-            int number1 = (32);
-            int number2 = (32);
+            var employee = new Employee("Jan", "Cebulski");
+            employee.AddGrade(5.5f);
+            employee.AddGrade(3.5f);
+            employee.AddGrade(6.0f);
+            var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(number1, number2);
-
-        }
-        [Test]
-        public void LessFloatNumber()
-        {
-            float number1 = (1.3f);
-            float number2 = (2.3f);
-
-            Assert.Less(number1, number2);
-
+            Assert.AreEqual(5.0f, statistics.Average);
         }
 
-        private Employee GetEmployee(string name, string surname, int age)
-        {
-        return new Employee(name, surname, age);
-        }
-
+      
     }
 }

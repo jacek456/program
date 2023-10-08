@@ -1,30 +1,39 @@
-﻿namespace ConsoleApp2
+﻿using ConsoleApp3;
+
+namespace ConsoleApp3
 {
     public class Employee
     {
-        public string Name;
-        public string Surname;
-        public int Age;
-        public int Result
-        {
-            get
-            {
-                return score.Sum();
-            }
-        }
-        List<int> score = new List<int>();
-        public Employee(string name, string surname, int age)
+        private List<float> grandes = new List<float>();
+
+        public Employee(string name, string surname)
         {
             this.Name = name;
-            this.Surname = surname;
-            this.Age = age;
+            this.SurName = surname;
+        }
+        public string Name { get; private set; }
+        public string SurName { get; private set; }
 
-
+        public void AddGrade(float grade)
+        {
+            this.grandes.Add(grade);
         }
 
-        public void AddScore(int points)
+        public Statistics GetStatistics()
         {
-            this.score.Add(points);
+            var statistics = new Statistics();
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            foreach (var grade in this.grandes)
+            {
+                statistics.Max = Math.Max(statistics.Max, grade);
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Average += grade;
+            }
+            statistics.Average /= this.grandes.Count;
+            return statistics;
         }
     }
 }
