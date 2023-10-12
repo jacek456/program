@@ -51,43 +51,36 @@ namespace ConsoleApp3
                 Console.WriteLine("String in not float");
             }
         }
-        public Statistics GetStatisticsWithDoWhile()
+        public void AddGrade(char grade)
         {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-            var index = 0;
-            do
+                switch (grade)
             {
-                statistics.Max = Math.Max(statistics.Max, this.grades[index]);
-                statistics.Min = Math.Min(statistics.Min, this.grades[index]);
-                statistics.Average += this.grades[index];
-                index++;
-            } while (index < this.grades.Count);
-            statistics.Average /= this.grades.Count;
-            return statistics;
-        }
-        public Statistics GetStatisticsWithWhile()
-        {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-            var index = 0;
-            while (index < this.grades.Count)
-            {
-                statistics.Max = Math.Max(statistics.Max, this.grades[index]);
-                statistics.Min = Math.Min(statistics.Min, this.grades[index]);
-                statistics.Average += this.grades[index];
-                index++;
+                case 'A':
+                case 'a':
+                    this.grades.Add(100);
+                    break;
+                case 'B':
+                case 'b':
+                    this.grades.Add(80);
+                    break;
+                case 'C':
+                case 'c':
+                    this.grades.Add(60);
+                    break;
+                case 'D':
+                case 'd':
+                    this.grades.Add(40);
+                    break;
+                case 'E':
+                case 'e':
+                    this.grades.Add(20);
+                    break;
+                default:
+                    Console.WriteLine("Wrong Letter");
+                    break;
             }
-            statistics.Average /= this.grades.Count;
-            return statistics;
         }
-        public Statistics GetStatisticsWithForeach()
+        public Statistics GetStatistics()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
@@ -101,22 +94,25 @@ namespace ConsoleApp3
                 statistics.Average += grade;
             }
             statistics.Average /= this.grades.Count;
-            return statistics;
-        }
-        public Statistics GetStatisticsWithFor()
-        {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
 
-            for (var index=0; index < grades.Count; index++)
+            switch(statistics.Average)
             {
-                statistics.Max = Math.Max(statistics.Max, grades[index]);
-                statistics.Min = Math.Min(statistics.Min, grades[index]);
-                statistics.Average = statistics.Average + grades[index];
+                case var average when average >= 80:
+                    statistics.AverageLetter = 'A';
+                    break;
+                case var average when average >= 60:
+                    statistics.AverageLetter = 'B';
+                    break;
+                case var average when average >= 40:
+                    statistics.AverageLetter = 'C';
+                    break;
+                case var average when average >= 20:
+                    statistics.AverageLetter = 'D';
+                    break;
+                default:
+                    statistics.AverageLetter = 'E';
+                    break;
             }
-            statistics.Average /= this.grades.Count;
             return statistics;
         }
     }
