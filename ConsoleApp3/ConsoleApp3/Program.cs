@@ -1,18 +1,6 @@
 ﻿using ConsoleApp3;
 using System.Reflection.Metadata;
 
-//var employee = new Employee("Adam", "Cebulski");
-//employee.AddGrade("23");
-//employee.AddGrade("45");
-//employee.AddGrade(888);
-//employee.AddGrade(6f);
-//employee.AddGrade('A');
-//var statistics = employee.GetStatistics();
-
-//Console.WriteLine($"Average: {statistics.Average}");
-//Console.WriteLine($"Max: {statistics.Max}");
-//Console.WriteLine($"Min: {statistics.Min}");
-//Console.WriteLine(statistics.AverageLetter);
 
 Console.WriteLine("Witamy w programie oceny pracowników");
 Console.WriteLine("======================================");
@@ -28,7 +16,15 @@ while (true)
     {
         break;
     }
-    employee.AddGrade(input);
+
+    try
+    {
+        employee.AddGrade(input);
+    }
+    catch (Exception exception)
+        {
+        Console.WriteLine($"Exception catched: {exception.Message}");
+    }
 }
 
 var statistics = employee.GetStatistics();
