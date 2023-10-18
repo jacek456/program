@@ -2,18 +2,27 @@
 
 namespace ConsoleApp3
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname)
-        {
-            this.Name = name;
-            this.SurName = surname;
-        }
-        public string Name { get; private set; }
-        public string SurName { get; private set; }
 
+        public Employee()
+            : this("no name")
+        {
+        }
+        public Employee(string name)
+            : this(name, "no surname")
+        {
+        }
+        public Employee(string name, string surname)
+            : base(name, surname)
+        {
+        }
+        public Employee(string name,string surname,char sex)
+            :base(name, surname, sex)
+        {
+        }
         public void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
