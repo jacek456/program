@@ -7,10 +7,10 @@ namespace TypeTests
         [Test]
         public void CheckingTheMaximumValue()
         {
-            var employee = new Employee("Jan", "Cebulski");
-            employee.AddGrade('C');
-            employee.AddGrade('A');
-            employee.AddGrade('b');
+            var employee = new Supervisor("Jan", "Cebulski");
+            employee.AddGrade("6");
+            employee.AddGrade("3-");
+            employee.AddGrade("+2");
             var statistics = employee.GetStatistics();
 
             Assert.AreEqual(100, statistics.Max);
@@ -18,24 +18,24 @@ namespace TypeTests
         [Test]
         public void CheckingTheMinimumValue()
         {
-            var employee = new Employee("Jan", "Cebulski");
-            employee.AddGrade(7);
-            employee.AddGrade('e');
-            employee.AddGrade("-1");
+            var employee = new Supervisor("Jan", "Cebulski");
+            employee.AddGrade("3");
+            employee.AddGrade("5-");
+            employee.AddGrade("1");
             var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(7, statistics.Min);
+            Assert.AreEqual(0, statistics.Min);
         }
         [Test]
         public void CheckingTheAverageValue()
         {
-           var employee = new Employee("Jan", "Cebulski");
-            employee.AddGrade('b');
-            employee.AddGrade("155");
+           var employee = new Supervisor("Jan", "Cebulski");
+            employee.AddGrade("4-");
+            employee.AddGrade("+2");
             employee.AddGrade(34);
             var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(57.0f, statistics.Average);
+            Assert.AreEqual(38.0f, statistics.Average);
         }
 
       
