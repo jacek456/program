@@ -39,26 +39,21 @@
 
         public override void AddGrade(char grade)
         {
-            switch (grade)
+            switch (char.ToUpper(grade))
             {
                 case 'A':
-                case 'a':
                     AddGrade(100);
                     break;
                 case 'B':
-                case 'b':
                     AddGrade(80);
                     break;
                 case 'C':
-                case 'c':
                     AddGrade(60);
                     break;
                 case 'D':
-                case 'd':
                     AddGrade(40);
                     break;
                 case 'E':
-                case 'e':
                     AddGrade(20);
                     break;
                 default:

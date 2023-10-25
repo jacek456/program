@@ -7,10 +7,10 @@ namespace TypeTests
         [Test]
         public void CheckingTheMaximumValue()
         {
-            var employee = new Supervisor("Jan", "Cebulski");
-            employee.AddGrade("6");
-            employee.AddGrade("3-");
-            employee.AddGrade("+2");
+            var employee = new EmployeeInFile("Jan", "Cebulski");
+            employee.AddGrade('B');
+            employee.AddGrade('c');
+            employee.AddGrade('a');
             var statistics = employee.GetStatistics();
 
             Assert.AreEqual(100, statistics.Max);
