@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp3
+﻿using static ConsoleApp3.EmployeeBase;
+
+namespace ConsoleApp3
 {
     public interface IEmployee
     {
@@ -10,6 +12,8 @@
         void AddGrade(long grade);
         void AddGrade(char grade);
         void AddGrade(string grade);
+
+        event GradeAddedDelegate GradeAdded;
         public Statistics GetStatistics();
     }
 }
