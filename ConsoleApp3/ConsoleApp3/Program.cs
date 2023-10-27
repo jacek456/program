@@ -13,8 +13,7 @@ void EmployeeGradeAdded(object sender, EventArgs args)
 {
     Console.WriteLine("Dodano nową ocenę");
 }
-
-employee.AddGrade(0.2f); 
+ 
 
 while (true)
 {
